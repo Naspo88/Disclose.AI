@@ -12,6 +12,7 @@ export type UserPlayer = {
 };
 
 export type TurnState = {
+  turnNumber: number;
   companies: string[];
   budget: number;
   needsToDisclose: boolean;

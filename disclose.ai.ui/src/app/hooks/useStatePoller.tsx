@@ -25,8 +25,9 @@ const useUserNameFromLocalStorage = () => {
 
 export const defaultGameStateValues: GlobalState = {
   name: '',
-  state: GameStates.endOfTurn,
+  state: GameStates.login,
   turn: {
+    turnNumber: 1,
     companies: ['Apple', 'Google', 'Facebook', 'Amazon', 'Microsoft'],
     budget: 10000,
     needsToDisclose: false,
@@ -38,11 +39,16 @@ let timeout: NodeJS.Timeout;
 const TIMEOUT = 3000;
 
 const pollingCondition = (userPlayer: UserPlayer, state: GameStates) =>
-  userPlayer && userPlayer.name && state !== GameStates.end && state !== GameStates.login;
+  userPlayer &&
+  userPlayer.name &&
+  state !== GameStates.end &&
+  state !== GameStates.login;
 
 const useStatePoller = () => {
   const { userPlayer, saveUserPlayer } = useUserNameFromLocalStorage();
-  const [gameState, setGameState] = useState<GlobalState>(defaultGameStateValues);
+  const [gameState, setGameState] = useState<GlobalState>(
+    defaultGameStateValues
+  );
 
   useEffect(() => {
     const getGameState = async ({ name }: UserPlayer) => {

@@ -7,30 +7,6 @@ import LoginPage from './LoginPage/LoginPage';
 import Rank from './Rank/Rank';
 import DiscloseOrBuy from './DiscloseOrBuy/DiscloseOrBuy';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-  },
-  {
-    path: '*',
-    element: <div>Not Found</div>,
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
-    path: '/rank',
-    element: <Rank />,
-  },
-  {
-    path: '/main',
-    element: <DiscloseOrBuy />,
-  },
-  { path: '/game-over', element: <>Game over</> },
-]);
-
 export const GameStateContext = createContext<GlobalContext>({
   gameState: defaultGameStateValues,
   userPlayer: {
@@ -61,10 +37,7 @@ const RouterStateManager = () => {
     <GameStateContext.Provider
       value={{ gameState, userPlayer, saveUserPlayer }}
     >
-      {/* this probably will die in favour of the following */}
-      <RouterProvider router={router} />
-      {/* this probably will be the routing logic */}
-      {/* <ViewShown /> */}
+      <ViewShown />
     </GameStateContext.Provider>
   );
 };
