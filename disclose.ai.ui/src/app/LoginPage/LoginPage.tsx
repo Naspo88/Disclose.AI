@@ -6,7 +6,10 @@ const LoginPage = () => {
 
   const loginClick = async () => {
     const response = await fetch(endpoints.setUser, {
-      method: 'PUT',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ name: inputValue.toLowerCase() }),
     });
     const data = await response.json();
