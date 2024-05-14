@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './app/app';
 import LoginPage from './app/LoginPage/LoginPage';
+import Rank from './app/Rank/Rank';
 
 const router = createBrowserRouter([
   {
