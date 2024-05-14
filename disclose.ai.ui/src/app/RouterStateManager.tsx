@@ -5,6 +5,7 @@ import useStatePoller, { defaultGameStateValues } from './hooks/useStatePoller';
 import App from './app';
 import LoginPage from './LoginPage/LoginPage';
 import Rank from './Rank/Rank';
+import Main from './Main/Main';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
     path: '/rank',
     element: <Rank />,
   },
-  { path: '/game-over', element: <GameOverPage /> },
+  {
+    path: '/main',
+    element: <Main />,
+  },
+  { path: '/game-over', element: <>Game over</> },
 ]);
 
 export const GameStateContext = createContext<GlobalContext>({

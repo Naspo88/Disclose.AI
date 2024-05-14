@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header className="bg-base-100 p-4">
+    <header className="bg-base-100 p-4 mb-4">
       <h1 className="text-center">Disclose.ai</h1>
       <div className="flex justify-between">
         <div>
