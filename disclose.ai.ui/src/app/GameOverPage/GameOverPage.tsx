@@ -1,12 +1,10 @@
-import Header from '../../shared/header';
-
 const GameOverPage = () => {
   return (
-    <div>
-      <Header />
-      <h1>Let's play - Comply or Die!</h1>
-      <input placeholder="Enter your name" />
-      <button onClick={() => console.log('Join the game')}>Join the game</button>
+    <div className="hero min-h-screen bg-base-200">
+      <div className="text-center lg:text-left">
+        <h1 className="text-5xl font-bold">Game over</h1>
+        <h2 className="text-2xl mt-10 font-bold">Sadness</h2>
+      </div>
     </div>
   );
 };

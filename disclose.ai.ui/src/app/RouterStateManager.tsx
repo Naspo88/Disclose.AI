@@ -4,6 +4,7 @@ import { GlobalState } from './types';
 import App from './app';
 import LoginPage from './LoginPage/LoginPage';
 import Rank from './Rank/Rank';
+import GameOverPage from './GameOverPage/GameOverPage';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     path: '/rank',
     element: <Rank />,
   },
-  { path: '/game-over', element: <div>Game Over</div> },
+  { path: '/game-over', element: <GameOverPage /> },
 ]);
 
 const defaultValues: GlobalState = {
