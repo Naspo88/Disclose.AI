@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { GlobalState, UserPlayer } from '../types';
+import { GlobalState, UserPlayer, GameStates } from '../types';
 
 const useUserNameFromLocalStorage = () => {
   const [userPlayer, setUserPlayer] = useState<UserPlayer>({
@@ -23,8 +23,8 @@ const useUserNameFromLocalStorage = () => {
 };
 
 export const defaultGameStateValues: GlobalState = {
-  name: 'not-set',
-  state: 'waiting',
+  name: '',
+  state: GameStates.end,
   turn: {
     companies: [],
     budget: 0,
@@ -33,6 +33,8 @@ export const defaultGameStateValues: GlobalState = {
   rank: {},
 };
 
+let timeout: NodeJS.Timeout;
+const TIMEOUT = 3000;
 const useStatePoller = () => {
   const { userPlayer, saveUserPlayer } = useUserNameFromLocalStorage();
   const [gameState, setGameState] = useState<GlobalState>(
@@ -41,18 +43,41 @@ const useStatePoller = () => {
 
   useEffect(() => {
     const getGameState = async ({ name }: UserPlayer) => {
+      console.log('getGameState');
       const response = await fetch(
         `https://8kq9kn2ojj.execute-api.eu-west-1.amazonaws.com/api/state?name=${name}`
       );
       const data = await response.json();
-      console.log(data);
+      console.log('new state', data);
       setGameState(data);
     };
 
-    if (userPlayer) {
-      getGameState(userPlayer);
+    if (userPlayer && gameState.state !== GameStates.end) {
+      console.log('user player exist', userPlayer);
+      console.log('game state =', gameState.state);
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+
+      timeout = setTimeout(async () => {
+        await getGameState(userPlayer);
+      }, TIMEOUT);
     }
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
   }, [userPlayer]);
+
+  useEffect(() => {
+    if (gameState.state === GameStates.end) {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    }
+  }, [gameState]);
 
   return {
     userPlayer,

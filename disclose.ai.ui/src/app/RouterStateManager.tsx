@@ -1,6 +1,6 @@
-import { createContext } from 'react';
+import { createContext, useMemo } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { GlobalContext } from './types';
+import { GlobalContext, GameStates } from './types';
 import useStatePoller, { defaultGameStateValues } from './hooks/useStatePoller';
 import App from './app';
 import LoginPage from './LoginPage/LoginPage';
@@ -42,11 +42,29 @@ export const GameStateContext = createContext<GlobalContext>({
 
 const RouterStateManager = () => {
   const { gameState, saveUserPlayer, userPlayer } = useStatePoller();
+
+  const ViewShown = () => {
+    if (!gameState) {
+      return <LoginPage />;
+    }
+
+    switch (gameState.state) {
+      case GameStates.endOfTurn:
+      case GameStates.end:
+        return <Rank />;
+      default:
+        return <Main />;
+    }
+  };
+
   return (
     <GameStateContext.Provider
       value={{ gameState, userPlayer, saveUserPlayer }}
     >
+      {/* this probably will die in favour of the following */}
       <RouterProvider router={router} />
+      {/* this probably will be the routing logic */}
+      {/* <ViewShown /> */}
     </GameStateContext.Provider>
   );
 };

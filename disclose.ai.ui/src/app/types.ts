@@ -1,4 +1,9 @@
-export type GameStates = 'waiting' | 'turn' | 'end-of-turn' | 'end';
+export enum GameStates {
+  waiting = 'waiting',
+  turn = 'turn',
+  endOfTurn = 'end-of-turn',
+  end = 'end',
+}
 
 export type UserPlayer = {
   name: string;
