@@ -25,7 +25,7 @@ const useUserNameFromLocalStorage = () => {
 
 export const defaultGameStateValues: GlobalState = {
   name: '',
-  state: GameStates.login,
+  state: GameStates.endOfTurn,
   turn: {
     companies: ['Apple', 'Google', 'Facebook', 'Amazon', 'Microsoft'],
     budget: 10000,

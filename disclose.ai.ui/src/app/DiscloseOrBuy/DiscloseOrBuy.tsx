@@ -44,6 +44,10 @@ const DiscloseOrBuy = () => {
           <div className="card-body">
             <h2 className="card-title">Loading game...</h2>
             <div>Waiting for other players to join</div>
+            <img
+              alt=""
+              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnFyYWlndHQ3aDhiOTNybDd2MnVta2x0dWU1MTNkc2x4a2V3N2xwayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TuZ8v66TzGeYJW23as/giphy.gif"
+            />
           </div>
         </div>
       )}
@@ -71,7 +75,11 @@ const DiscloseOrBuy = () => {
         <div className="card w-96 bg-base-100 shadow-xl mx-auto mb-4">
           <div className="card-body">
             <h2 className="card-title">Your investment has been selected</h2>
-            <div>Results will be ready soon</div>
+            <div>This is the end of your turn</div>
+            <img
+              alt=""
+              src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Ixbzl0ZXBhbnoxcnY4b2kxd3JhajB0cXhza285azZvZmpyNzB4NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MZocLC5dJprPTcrm65/giphy.gif"
+            />
           </div>
         </div>
       )}
