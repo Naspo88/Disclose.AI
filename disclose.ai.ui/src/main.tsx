@@ -18,6 +18,10 @@ const router = createBrowserRouter([
     path: '/login',
     element: <LoginPage />,
   },
+  {
+    path: '/rank',
+    element: <Rank />,
+  },
   { path: '/game-over', element: <div>Game Over</div> },
 ]);
 
