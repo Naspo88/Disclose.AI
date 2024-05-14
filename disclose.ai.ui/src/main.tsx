@@ -7,6 +7,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-    <RouterManager />
+    <div className="artboard artboard-demo">
+      <RouterManager />
+    </div>
   </StrictMode>
 );
