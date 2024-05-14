@@ -4,18 +4,15 @@ import { GameStateContext } from "../RouterStateManager";
 
 const Rank = () => {
     const { gameState } = useContext(GameStateContext);
+    const max_score = Object.entries(gameState.rank).reduce((a, b) => a[1] > b[1] ? a : b)[0]
  
     return (
-    <div>
-      {/* <span className="badge-primary">Hi {gameState.name}</span> */}
-      <div className="stat shadow">
-      <div className="stat-figure text-primary">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-    </div>
-        <div className="stat-title">{gameState.name}</div>
-        <div className="stat-value">{gameState.rank[gameState.name]}</div>
-    </div>
+        <div className="card w-96 bg-base-100 shadow-xl mx-auto mb-4 min-h-full">
+        {/* <div className="stat-title">{gameState.name}</div> */}
+        <div className="card-body ">
+        {/* <div className="card self-center">{gameState.name} {gameState.rank[gameState.name]}</div> */}
 
+        <div className="card-title">Final Ranking</div>
     
       <table className="table">
       <thead>
@@ -26,14 +23,16 @@ const Rank = () => {
       </thead>
       <tbody>
         {Object.entries(gameState.rank).sort(([,valueA], [,valueB]) => valueB - valueA).map(([key, value]) => (
-          <tr key={key}>
-            <td>{key}</td>
+          <tr key={key} className={key === gameState.name ? "bg-neutral " : undefined}>
+            
+            <td>{key }  {key === max_score ? "🏆" : undefined} </td>
             <td>{value}</td>
           </tr>
         ))}
       </tbody>
     </table>
-
+    
+    </div>
     </div>
     )
 };
