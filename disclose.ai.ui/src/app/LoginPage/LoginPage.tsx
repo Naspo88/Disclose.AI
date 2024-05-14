@@ -13,14 +13,13 @@ const LoginPage = () => {
         <h1 className="text-4xl font-bold">Comply or Die!</h1>
         <h2 className="text-2xl mt-10 font-bold">How to play the game</h2>
         <p className="mt-1">
-          The aim of the game is to make the most profit, without triggering a
-          rule. You can choose to comply with the rule or take a risk and break
-          the rule.
+          The aim of the game is to make the most profit, without triggering a rule. You can choose to comply with the
+          rule or take a risk and break the rule.
         </p>
 
         <p className="mt-3">
-          Good luck, and remember, the rules are there for a reason! When you're
-          ready to play, enter your name below and join the game!
+          Good luck, and remember, the rules are there for a reason! When you're ready to play, enter your name below
+          and join the game!
         </p>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto mt-10">
           <form className="card-body">
@@ -38,6 +37,7 @@ const LoginPage = () => {
               />
             </div>
             <div className="form-control mt-6">
+<<<<<<< HEAD
               <button
                 className="btn btn-primary"
                 onClick={() => {
@@ -61,6 +61,9 @@ const LoginPage = () => {
                   });
                 }}
               >
+=======
+              <button className="btn btn-primary" type="button" onClick={loginClick}>
+>>>>>>> 628d14847cdef976851d1f3178549b5d0341a024
                 Join the game!
               </button>
             </div>
