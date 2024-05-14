@@ -24,7 +24,7 @@ const DiscloseOrBuy = () => {
                 </div>
               </div>
               <div className="chat-bubble">
-                I am the reulator, and this is the rule that will govern the decision the player will make about
+                I am the regulator, and this is the rule that will govern the decision the player will make about
                 investment and disclosure.
               </div>
             </div>
@@ -44,7 +44,7 @@ const DiscloseOrBuy = () => {
               Disclose?
             </button>
           {gameState.turn.companies.map((company) => (
-            <InvestmentSlider key={company} name={company} />
+            <InvestmentSlider key={company} name={company} maxAmount={gameState.turn.budget} />
           ))}
           <div className="card-actions justify-end">
             <button className="btn btn-primary" onClick={() => console.log('buy')}>

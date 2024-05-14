@@ -4,3 +4,10 @@ export const currencyFormatter = (number: number, currency = 'USD') => {
     currency: currency,
   }).format(number);
 };
+
+export const getInitials = (name: string) => {
+  return name
+    .split(' ')
+    .map((n) => n[0])
+    .join('');
+};

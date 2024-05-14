@@ -4,7 +4,7 @@ import { endpoints } from '../endpoints';
 
 const useUserNameFromLocalStorage = () => {
   const [userPlayer, setUserPlayer] = useState<UserPlayer>({
-    name: '',
+    name: 'Anibe Agamah',
     isAdmin: false,
   });
 
@@ -28,7 +28,7 @@ export const defaultGameStateValues: GlobalState = {
   state: GameStates.login,
   turn: {
     companies: ['Apple', 'Google', 'Facebook', 'Amazon', 'Microsoft'],
-    budget: 0,
+    budget: 10000,
     needsToDisclose: false,
   },
   rank: {},

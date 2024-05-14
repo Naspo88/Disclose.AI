@@ -1,12 +1,11 @@
-import React from 'react';
+import { useState } from 'react';
 import { currencyFormatter } from '../../utils/formatter';
 
-const InvestmentSlider = ({ name }: { name: string }) => {
-  const [value, setValue] = React.useState<number>(0);
+const InvestmentSlider = ({ name, maxAmount }: { name: string; maxAmount: number }) => {
+  const [value, setValue] = useState<number>(0);
   const handleChange = (event: any) => {
     const newValue = event.target.value;
     setValue(newValue as number);
-    console.log(`newValue ${name}`, newValue);
   };
   return (
     <div>
@@ -18,7 +17,7 @@ const InvestmentSlider = ({ name }: { name: string }) => {
         name={name}
         type="range"
         min="0"
-        max="100000"
+        max={maxAmount}
         value={value}
         className="range range-primary"
         onChange={handleChange}
