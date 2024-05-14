@@ -9,8 +9,8 @@ const ControlCentre = () => {
   return (
     <div>
       <Header />
-      <h1 className="tex-xxl">Control Centre</h1>
-      {userPlayer.isAdmin && (
+      <h1 className="text-xxl">Control Centre</h1>
+      {userPlayer.isAdmin ? (
         <div>
           <button className="btn btn-primary" onClick={() => navigate('/splash')}>
             Splash
@@ -22,6 +22,8 @@ const ControlCentre = () => {
             Rank
           </button>
         </div>
+      ) : (
+        <div>Please ask your game admin to start the game</div>
       )}
     </div>
   );
