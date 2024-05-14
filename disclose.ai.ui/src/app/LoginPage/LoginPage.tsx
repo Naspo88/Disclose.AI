@@ -1,20 +1,10 @@
-import { useState } from 'react';
-import { endpoints } from '../endpoints';
+import { useState, useContext } from 'react';
+import { GameStateContext } from '../RouterStateManager';
+import { GameStates } from '../types';
 
 const LoginPage = () => {
   const [inputValue, setInputValue] = useState<string>('');
-
-  const loginClick = async () => {
-    const response = await fetch(endpoints.setUser, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: inputValue.toLowerCase() }),
-    });
-    const data = await response.json();
-    console.log(data);
-  };
+  const { setUserPlayer, setGameState } = useContext(GameStateContext);
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -48,7 +38,29 @@ const LoginPage = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary" onClick={loginClick}>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  setUserPlayer({ name: inputValue, isAdmin: false });
+                  setGameState({
+                    name: inputValue,
+                    state: GameStates.turn,
+                    turn: {
+                      turnNumber: 1,
+                      companies: [
+                        'Apple',
+                        'Google',
+                        'Facebook',
+                        'Amazon',
+                        'Microsoft',
+                      ],
+                      budget: 10000,
+                      needsToDisclose: false,
+                    },
+                    rank: {},
+                  });
+                }}
+              >
                 Join the game!
               </button>
             </div>

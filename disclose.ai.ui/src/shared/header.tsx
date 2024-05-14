@@ -1,8 +1,10 @@
+import { useContext } from 'react';
 import { currencyFormatter, getInitials } from '../app/utils/formatter';
-import useStatePoller from '../app/hooks/useStatePoller';
+import { GameStateContext } from '../app/RouterStateManager';
 
 const Header = () => {
-  const { userPlayer, gameState } = useStatePoller();
+  const { userPlayer, gameState } = useContext(GameStateContext);
+
   return (
     <header className="bg-base-100 p-4 mb-4">
       <div className="text-center font-bold">
@@ -20,13 +22,13 @@ const Header = () => {
               <span className="text-xs">{getInitials(userPlayer.name)}</span>
             </div>
           </div>
-          <span>
-            Hi {userPlayer.name}
-          </span>
+          <span>Hi {userPlayer.name}</span>
         </div>
         <div>
           <h3 className="font-bold">Your budget</h3>
-          <div className="badge">{currencyFormatter(gameState.turn.budget)}</div>
+          <div className="badge">
+            {currencyFormatter(gameState.turn.budget)}
+          </div>
         </div>
       </div>
     </header>

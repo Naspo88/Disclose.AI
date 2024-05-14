@@ -31,6 +31,7 @@ export interface GlobalState {
 
 export interface GlobalContext {
   gameState: GlobalState;
+  setGameState: (gameState: GlobalState) => void;
   userPlayer: UserPlayer;
-  saveUserPlayer: (userPlayer: UserPlayer) => void;
+  setUserPlayer: (userPlayer: UserPlayer) => void;
 }

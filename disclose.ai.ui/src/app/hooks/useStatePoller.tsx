@@ -2,27 +2,6 @@ import { useEffect, useState } from 'react';
 import { GlobalState, UserPlayer, GameStates } from '../types';
 import { endpoints } from '../endpoints';
 
-const useUserNameFromLocalStorage = () => {
-  const [userPlayer, setUserPlayer] = useState<UserPlayer>({
-    name: 'Anibe Agamah',
-    isAdmin: false,
-  });
-
-  useEffect(() => {
-    const storedValue = localStorage.getItem('userPlayer');
-    if (storedValue) {
-      setUserPlayer(JSON.parse(storedValue));
-    }
-  }, []);
-
-  const saveUserPlayer = (userPlayer: UserPlayer) => {
-    localStorage.setItem('userPlayer', JSON.stringify(userPlayer));
-    setUserPlayer(userPlayer);
-  };
-
-  return { userPlayer, saveUserPlayer };
-};
-
 export const defaultGameStateValues: GlobalState = {
   name: '',
   state: GameStates.login,
@@ -45,7 +24,10 @@ const pollingCondition = (userPlayer: UserPlayer, state: GameStates) =>
   state !== GameStates.login;
 
 const useStatePoller = () => {
-  const { userPlayer, saveUserPlayer } = useUserNameFromLocalStorage();
+  const [userPlayer, setUserPlayer] = useState<UserPlayer>({
+    name: '',
+    isAdmin: false,
+  });
   const [gameState, setGameState] = useState<GlobalState>(
     defaultGameStateValues
   );
@@ -88,8 +70,9 @@ const useStatePoller = () => {
 
   return {
     userPlayer,
+    setGameState,
     gameState,
-    saveUserPlayer,
+    setUserPlayer,
   };
 };
 
