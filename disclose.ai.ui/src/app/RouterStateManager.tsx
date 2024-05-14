@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { GlobalState } from './types';
+import { GlobalContext } from './types';
+import useStatePoller, { defaultGameStateValues } from './hooks/useStatePoller';
 import App from './app';
 import LoginPage from './LoginPage/LoginPage';
 import Rank from './Rank/Rank';
@@ -25,22 +26,21 @@ const router = createBrowserRouter([
   { path: '/game-over', element: <div>Game Over</div> },
 ]);
 
-const defaultValues: GlobalState = {
-  name: 'not-set',
-  state: 'waiting',
-  turn: {
-    companies: [],
-    budget: 0,
-    needsToDisclose: false,
+export const GameStateContext = createContext<GlobalContext>({
+  gameState: defaultGameStateValues,
+  userPlayer: {
+    name: 'not-set',
+    isAdmin: false,
   },
-  rank: {},
-};
-
-export const GameStateContext = createContext<GlobalState>(defaultValues);
+  saveUserPlayer: () => true,
+});
 
 const RouterStateManager = () => {
+  const { gameState, saveUserPlayer, userPlayer } = useStatePoller();
   return (
-    <GameStateContext.Provider value={defaultValues}>
+    <GameStateContext.Provider
+      value={{ gameState, userPlayer, saveUserPlayer }}
+    >
       <RouterProvider router={router} />
     </GameStateContext.Provider>
   );
