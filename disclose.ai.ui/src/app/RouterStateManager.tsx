@@ -34,7 +34,7 @@ const router = createBrowserRouter([
 export const GameStateContext = createContext<GlobalContext>({
   gameState: defaultGameStateValues,
   userPlayer: {
-    name: 'not-set',
+    name: 'User Name',
     isAdmin: false,
   },
   saveUserPlayer: () => true,
