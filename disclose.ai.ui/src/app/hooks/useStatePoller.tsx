@@ -23,7 +23,7 @@ const useUserNameFromLocalStorage = () => {
 };
 
 export const defaultGameStateValues: GlobalState = {
-  name: 'User Name',
+  name: 'roberto',
   state: GameStates.end,
   turn: {
     companies: [],
@@ -32,7 +32,8 @@ export const defaultGameStateValues: GlobalState = {
   },
   rank: {
     roberto : 150,
-    loris : -100
+    loris : -100,
+    ena : 1000
   },
 };
 
