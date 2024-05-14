@@ -1,21 +1,24 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './app/app';
+import LoginPage from './app/LoginPage/LoginPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
   },
   {
-    path: "*",
+    path: '*',
     element: <div>Not Found</div>,
-  }
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  { path: '/game-over', element: <div>Game Over</div> },
 ]);
 
 const root = ReactDOM.createRoot(
