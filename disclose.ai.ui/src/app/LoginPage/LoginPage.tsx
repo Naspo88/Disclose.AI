@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+
 const LoginPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="text-center lg:text-left">
@@ -29,7 +32,16 @@ const LoginPage = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Join the game!</button>
+              <button
+                className="btn btn-primary"
+                onClick={() =>
+                  fetch('/user', { method: 'PUT' }).then(() =>
+                    navigate('/main')
+                  )
+                }
+              >
+                Join the game!
+              </button>
             </div>
           </form>
         </div>
