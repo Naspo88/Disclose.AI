@@ -44,7 +44,8 @@ const RouterStateManager = () => {
   const { gameState, saveUserPlayer, userPlayer } = useStatePoller();
 
   const ViewShown = () => {
-    if (!gameState) {
+    console.log(gameState);
+    if (!gameState || gameState.state === GameStates.login) {
       return <LoginPage />;
     }
 

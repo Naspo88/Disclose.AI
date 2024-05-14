@@ -1,4 +1,5 @@
 export enum GameStates {
+  login = 'login',
   waiting = 'waiting',
   turn = 'turn',
   endOfTurn = 'end-of-turn',

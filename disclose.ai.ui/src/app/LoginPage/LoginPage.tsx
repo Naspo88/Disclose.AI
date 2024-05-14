@@ -1,7 +1,18 @@
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { endpoints } from '../endpoints';
 
 const LoginPage = () => {
-  const navigate = useNavigate();
+  const [inputValue, setInputValue] = useState<string>('');
+
+  const loginClick = async () => {
+    const response = await fetch(endpoints.setUser, {
+      method: 'PUT',
+      body: JSON.stringify({ name: inputValue.toLowerCase() }),
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="text-center lg:text-left">
@@ -28,18 +39,13 @@ const LoginPage = () => {
                 type="player-name"
                 placeholder="Enter your name here"
                 className="input input-bordered"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
                 required
               />
             </div>
             <div className="form-control mt-6">
-              <button
-                className="btn btn-primary"
-                onClick={() =>
-                  fetch('/user', { method: 'PUT' }).then(() =>
-                    navigate('/main')
-                  )
-                }
-              >
+              <button className="btn btn-primary" onClick={loginClick}>
                 Join the game!
               </button>
             </div>
