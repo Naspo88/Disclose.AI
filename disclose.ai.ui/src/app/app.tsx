@@ -1,9 +1,9 @@
-import NxWelcome from './nx-welcome';
+import ControlCentre from './ControlCentre';
 
 export function App() {
   return (
     <div>
-      <NxWelcome title="disclose.ai" />
+      <ControlCentre />
     </div>
   );
 }
