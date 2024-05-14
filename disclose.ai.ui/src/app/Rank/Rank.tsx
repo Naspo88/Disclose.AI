@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { GameStateContext } from '../RouterStateManager';
+import { currencyFormatter } from '../utils/formatter';
 
 const Rank = () => {
   const { gameState } = useContext(GameStateContext);
@@ -37,7 +38,7 @@ const Rank = () => {
                   <td>
                     {key} {key === max_score ? '🏆' : undefined}{' '}
                   </td>
-                  <td>{value}</td>
+                  <td>{currencyFormatter(value)}</td>
                 </tr>
               ))}
           </tbody>

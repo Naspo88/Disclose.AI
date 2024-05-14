@@ -5,6 +5,11 @@ import { GameStateContext } from '../RouterStateManager';
 import { GameStates } from '../types';
 import Rank from '../Rank/Rank';
 
+function randomIntFromInterval(min: number, max: number) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min) * 100;
+}
+
 const DiscloseOrBuy = () => {
   const [hasReadRules, setHasReadRules] = useState(false);
   const [timeoutIsOut, setTimeoutIsOut] = useState(false);
@@ -89,13 +94,19 @@ const DiscloseOrBuy = () => {
                   setGameState({
                     ...gameState,
                     state: GameStates.endOfTurn,
+                    turn: {
+                      ...gameState.turn,
+                      needsToDisclose: false,
+                    },
                     rank: {
-                      roberto: 15060,
-                      vincent: 14512,
-                      richard: -12334,
-                      loris: 10643,
-                      laurence: -123,
-                      ena: 23967,
+                      roberto: randomIntFromInterval(-1000, 1000),
+                      vincent: randomIntFromInterval(-1000, 1000),
+                      richard: randomIntFromInterval(-1000, 1000),
+                      loris: randomIntFromInterval(-1000, 1000),
+                      laurence: randomIntFromInterval(-1000, 1000),
+                      ena: randomIntFromInterval(-1000, 1000),
+                      amman: randomIntFromInterval(-1000, 1000),
+                      anibe: randomIntFromInterval(-1000, 1000),
                     },
                   });
                 }}
