@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { endpoints } from '../endpoints';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [inputValue, setInputValue] = useState<string>('');
 
   const loginClick = async () => {
     const response = await fetch(endpoints.setUser, {
       method: 'PUT',
       body: JSON.stringify({ name: inputValue.toLowerCase() }),
-    });
+    })
+      .then(() => navigate('/main'))
+      .catch((error) => console.error(error));
     const data = await response.json();
     console.log(data);
   };
@@ -36,6 +41,7 @@ const LoginPage = () => {
                 <span className="label-text">Player name</span>
               </label>
               <input
+                id="player-name"
                 type="player-name"
                 placeholder="Enter your name here"
                 className="input input-bordered"
