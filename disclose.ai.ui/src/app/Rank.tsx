@@ -1,27 +1,33 @@
-import { useNavigate } from 'react-router-dom';
-import Header from '../shared/header';
+import { useContext } from "react";
+import { GameStateContext } from "./RouterStateManager";
 
-const ControlCentre = () => {
-  const navigate = useNavigate();
-
-  return (
+const Rank = () => {
+    const { gameState } = useContext(GameStateContext);
+ 
+    return (
     <div>
-      <Header />
-      <h1 className="card">Control Centre</h1>
-      <button className="btn btn-primary" onClick={() => navigate('/splash')}>
-        Splash
-      </button>
-      <button className="btn btn-secondary" onClick={() => navigate('/main')}>
-        Main
-      </button>
-      <button className="btn btn-accent" onClick={() => navigate('/rank')}>
-        Rank
-      </button>
-      <button className="btn btn-quadernary" onClick={() => navigate('/game-over')}>
-        Game Over
-      </button>
+      <span className="badge-primary">Hi {gameState.name}</span>
+    
+      <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.keys(gameState.rank).map((key) => (
+          <tr key={key}>
+            <td>{key}</td>
+            <td>{gameState.rank[key]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
     </div>
-  );
+    )
 };
 
-export default ControlCentre;
+
+export default Rank;
