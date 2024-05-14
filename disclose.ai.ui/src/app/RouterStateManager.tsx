@@ -4,7 +4,6 @@ import { GlobalState } from './types';
 import App from './app';
 import LoginPage from './LoginPage/LoginPage';
 import Rank from './Rank/Rank';
-import GameOverPage from './GameOverPage/GameOverPage';
 
 const router = createBrowserRouter([
   {
