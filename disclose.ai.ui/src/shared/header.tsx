@@ -7,10 +7,10 @@ const Header = () => {
     <header className="bg-base-100 p-4 mb-4">
       <div className="text-center font-bold">
         <a href="/" className="inline-block ">
-          <span role="img" aria-label="money tongue emoji">
-            🤑
+          <span role="img" aria-label="up chart emoji">
+            📈💀
           </span>
-          Disclose.ai
+          Comply or Die!
         </a>
       </div>
       <div className="flex justify-between">
@@ -20,9 +20,7 @@ const Header = () => {
               <span className="text-xs">{getInitials(userPlayer.name)}</span>
             </div>
           </div>
-          <span>
-            Hi {userPlayer.name}
-          </span>
+          <span>Hi {userPlayer.name}</span>
         </div>
         <div>
           <h3 className="font-bold">Your budget</h3>
