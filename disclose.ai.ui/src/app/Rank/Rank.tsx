@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { GameStateContext } from "../RouterStateManager";
 
 const Rank = () => {
-    const { userPlayer } = useContext(GameStateContext);
+    const { gameState } = useContext(GameStateContext);
 
     return (
     <div>
       <h1>You think you're good?</h1>
-      <span className="badge-primary">{userPlayer.name}</span>
+      <span className="badge-primary">{gameState.name}</span>
+      
     </div>
     )
 };

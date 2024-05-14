@@ -23,14 +23,17 @@ const useUserNameFromLocalStorage = () => {
 };
 
 export const defaultGameStateValues: GlobalState = {
-  name: '',
+  name: 'User Name',
   state: GameStates.end,
   turn: {
     companies: [],
     budget: 0,
     needsToDisclose: false,
   },
-  rank: {},
+  rank: {
+    roberto : 150,
+    loris : -100
+  },
 };
 
 let timeout: NodeJS.Timeout;
