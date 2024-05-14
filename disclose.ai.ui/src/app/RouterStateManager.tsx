@@ -5,7 +5,7 @@ import useStatePoller, { defaultGameStateValues } from './hooks/useStatePoller';
 import App from './app';
 import LoginPage from './LoginPage/LoginPage';
 import Rank from './Rank/Rank';
-import Main from './Main/Main';
+import DiscloseOrBuy from './DiscloseOrBuy/DiscloseOrBuy';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/main',
-    element: <Main />,
+    element: <DiscloseOrBuy />,
   },
   { path: '/game-over', element: <>Game over</> },
 ]);
@@ -43,9 +43,7 @@ export const GameStateContext = createContext<GlobalContext>({
 const RouterStateManager = () => {
   const { gameState, saveUserPlayer, userPlayer } = useStatePoller();
   return (
-    <GameStateContext.Provider
-      value={{ gameState, userPlayer, saveUserPlayer }}
-    >
+    <GameStateContext.Provider value={{ gameState, userPlayer, saveUserPlayer }}>
       <RouterProvider router={router} />
     </GameStateContext.Provider>
   );
