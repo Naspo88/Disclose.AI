@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     path: '/rank',
     element: <Rank />,
   },
-  { path: '/game-over', element: <div>Game Over</div> },
+  { path: '/game-over', element: <GameOverPage /> },
 ]);
 
 export const GameStateContext = createContext<GlobalContext>({
