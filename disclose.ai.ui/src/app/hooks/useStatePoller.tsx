@@ -26,7 +26,7 @@ export const defaultGameStateValues: GlobalState = {
   name: 'roberto',
   state: GameStates.end,
   turn: {
-    companies: [],
+    companies: ['Apple', 'Microsoft', 'Google', 'Amazon'],
     budget: 0,
     needsToDisclose: false,
   },
@@ -41,16 +41,12 @@ let timeout: NodeJS.Timeout;
 const TIMEOUT = 3000;
 const useStatePoller = () => {
   const { userPlayer, saveUserPlayer } = useUserNameFromLocalStorage();
-  const [gameState, setGameState] = useState<GlobalState>(
-    defaultGameStateValues
-  );
+  const [gameState, setGameState] = useState<GlobalState>(defaultGameStateValues);
 
   useEffect(() => {
     const getGameState = async ({ name }: UserPlayer) => {
       console.log('getGameState');
-      const response = await fetch(
-        `https://8kq9kn2ojj.execute-api.eu-west-1.amazonaws.com/api/state?name=${name}`
-      );
+      const response = await fetch(`https://8kq9kn2ojj.execute-api.eu-west-1.amazonaws.com/api/state?name=${name}`);
       const data = await response.json();
       console.log('new state', data);
       setGameState(data);

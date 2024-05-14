@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Header from '../../shared/header';
+import InvestmentSlider from './components/InvestmentSlider';
+import { GameStateContext } from '../RouterStateManager';
 
 const DiscloseOrBuy = () => {
   const [hasReadRules, setHasReadRules] = useState(false);
+  const { gameState } = useContext(GameStateContext);
   return (
     <div>
       <Header />
@@ -36,14 +39,16 @@ const DiscloseOrBuy = () => {
 
       <div className="card w-96 bg-base-100 shadow-xl mx-auto mb-4">
         <div className="card-body">
-          <h2 className="card-title">Choose your portfolio</h2>
-          <div>Investment choices go here</div>
+          <h2 className="card-title">Your portfolio</h2>
+          <button className="btn btn-secondary" onClick={() => console.log('disclose')}>
+              Disclose?
+            </button>
+          {gameState.turn.companies.map((company) => (
+            <InvestmentSlider key={company} name={company} />
+          ))}
           <div className="card-actions justify-end">
             <button className="btn btn-primary" onClick={() => console.log('buy')}>
               Buy
-            </button>
-            <button className="btn btn-secondary" onClick={() => console.log('disclose')}>
-              Disclose
             </button>
           </div>
         </div>
