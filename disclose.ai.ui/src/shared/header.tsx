@@ -1,5 +1,5 @@
-import { currencyFormatter, getInitials } from "../app/utils/formatter";
-import useStatePoller from "../app/hooks/useStatePoller";
+import { currencyFormatter, getInitials } from '../app/utils/formatter';
+import useStatePoller from '../app/hooks/useStatePoller';
 
 const Header = () => {
   const { userPlayer, gameState } = useStatePoller();
@@ -20,7 +20,9 @@ const Header = () => {
               <span className="text-xs">{getInitials(userPlayer.name)}</span>
             </div>
           </div>
-          <span>Hello {userPlayer.name}</span>
+          <span>
+            Hi {userPlayer.name}
+          </span>
         </div>
         <div>
           <h3 className="font-bold">Your budget</h3>
