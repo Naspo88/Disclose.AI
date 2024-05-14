@@ -1,11 +1,11 @@
-import { createContext, useMemo } from 'react';
+import { createContext } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GlobalContext, GameStates } from './types';
 import useStatePoller, { defaultGameStateValues } from './hooks/useStatePoller';
 import App from './app';
 import LoginPage from './LoginPage/LoginPage';
 import Rank from './Rank/Rank';
-import Main from './Main/Main';
+import DiscloseOrBuy from './DiscloseOrBuy/DiscloseOrBuy';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/main',
-    element: <Main />,
+    element: <DiscloseOrBuy />,
   },
   { path: '/game-over', element: <>Game over</> },
 ]);
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
 export const GameStateContext = createContext<GlobalContext>({
   gameState: defaultGameStateValues,
   userPlayer: {
-    name: 'not-set',
+    name: 'User Name',
     isAdmin: false,
   },
   saveUserPlayer: () => true,
@@ -53,7 +53,7 @@ const RouterStateManager = () => {
       case GameStates.end:
         return <Rank />;
       default:
-        return <Main />;
+        return <DiscloseOrBuy />;
     }
   };
 
