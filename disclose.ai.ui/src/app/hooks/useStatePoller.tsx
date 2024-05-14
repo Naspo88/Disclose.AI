@@ -39,18 +39,20 @@ const useStatePoller = () => {
     defaultGameStateValues
   );
 
-  //   useEffect(() => {
-  //     const getGameState = async (url: string) => {
-  //       console.log(userName);
-  //       //   const response = await fetch(url);
-  //       //   const data = await response.json();
-  //       //   setGameState(data);
-  //     };
+  useEffect(() => {
+    const getGameState = async ({ name }: UserPlayer) => {
+      const response = await fetch(
+        `https://8kq9kn2ojj.execute-api.eu-west-1.amazonaws.com/api/state?name=${name}`
+      );
+      const data = await response.json();
+      console.log(data);
+      setGameState(data);
+    };
 
-  //     if (userName) {
-  //       getGameState(userName);
-  //     }
-  //   }, [userName]);
+    if (userPlayer) {
+      getGameState(userPlayer);
+    }
+  }, [userPlayer]);
 
   return {
     userPlayer,
